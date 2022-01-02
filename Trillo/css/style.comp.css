@@ -245,9 +245,14 @@ body {
   background-color: transparent;
   cursor: pointer;
   transition: all .2s; }
+  .btn-inline span {
+    margin-left: 3px;
+    transition: margin-left .2s; }
   .btn-inline:hover {
     color: var(--color-grey-dark-1);
     /* Thanks to currentColor we don't have to add additional line with border-bottom here */ }
+    .btn-inline:hover span {
+      margin-left: 8px; }
   .btn-inline:focus {
     outline: none;
     animation: pulsate 1s infinite;
@@ -356,6 +361,53 @@ body {
     font-family: sans-serif;
     z-index: 1; }
 
+.cta {
+  padding: 3.5rem 0;
+  text-align: center; }
+  .cta__book-now {
+    font-size: 2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem; }
+
+.btn {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  border-radius: 100px;
+  border: none;
+  background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  /* To hide invisible part of button. Now it is above button */
+  cursor: pointer; }
+  .btn > * {
+    /* Select all of the child elements */
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    /* Height and width propery to use translateY */
+    transition: all .2s; }
+  .btn__visible {
+    padding: 2rem 7.5rem; }
+  .btn__invisible {
+    position: absolute;
+    padding: 2rem 0;
+    left: 0;
+    top: -100%;
+    transition: all .2s; }
+  .btn:hover {
+    background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark)); }
+  .btn:hover .btn__visible {
+    transform: translateY(100%);
+    /* 100% of it height (it has to be specified) */ }
+  .btn:hover .btn__invisible {
+    top: 0; }
+  .btn:focus {
+    outline: none;
+    animation: pulsate 1s infinite; }
+
 .container {
   max-width: 120rem;
   /* If there is less space then 1200px it will take 100% of avilable viewport */
@@ -410,4 +462,7 @@ body {
 
 .user-reviews {
   /* Right part */
-  flex: 1; }
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
